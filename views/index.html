@@ -1,0 +1,38 @@
+<html>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAkoqYuXsb7R6I5gSwb3kmSamNfvQ7W9U8",
+    authDomain: "issue-tracker-8c7e0.firebaseapp.com",
+    databaseURL: "https://issue-tracker-8c7e0.firebaseio.com",
+    storageBucket: "issue-tracker-8c7e0.appspot.com",
+    messagingSenderId: "893777413665"
+  };
+  firebase.initializeApp(config);
+</script>
+<head>
+	<title> Issue Tracker
+	</title>
+	<link rel = "stylesheet" type="text/css href="style.css">
+</head>
+<body>
+	<div class = "main">
+	<form>
+		<table>
+			<tr>
+		<td>Username:</td>
+		<td><input type ="text" name = "Username"/></td><br>
+	</tr>
+		<tr>
+			<td>Password:</td>
+		<td><input type = "password" name = "Password"/></td><br>
+	</tr>
+	<tr>
+		<td><button>LOGIN</button></td>
+	</tr>
+</table>
+	</form>
+</div>
+	</body>
+</html>

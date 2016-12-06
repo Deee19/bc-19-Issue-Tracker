@@ -1,0 +1,24 @@
+{
+  "name": "bc-19-issue-tracker",
+  "version": "1.0.0",
+  "description": "Andela Bootcamp Project to build a simple issue tracker application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deee19/bc-19-Issue-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deee19/bc-19-Issue-Tracker/issues"
+  },
+  "homepage": "https://github.com/Deee19/bc-19-Issue-Tracker#readme",
+  "dependencies": {
+    "ejs": "^2.5.4",
+    "express": "^4.14.0",
+    "firebase": "^3.6.2"
+  }
+}

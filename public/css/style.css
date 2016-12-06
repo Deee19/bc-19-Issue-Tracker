@@ -1,0 +1,36 @@
+body {
+	color: #fff;
+}
+.main {
+	width: 300px;
+	margin: 0 auto;
+	padding: 300px;
+	color: #064073;
+}
+form {
+	margin: 5px;
+	display: block;
+}
+form input {
+	display: block; 
+	padding:200px;
+	margin:100px;
+}
+td { 
+	text-align:left;
+	font-family: verdana,arial;
+	color: #064073;
+	font-size: 1.00em;
+}
+input {
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	color: #666666;
+	display: inline-block;
+	font-size: 1.00em;
+	padding: 5px;
+}
+table.center {
+	margin-left:auto;
+	margin-right:auto;
+}
