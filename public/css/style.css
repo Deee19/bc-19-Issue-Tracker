@@ -1,5 +1,6 @@
 body {
-  background-color: #1cbb9b;
+  background: url('../images/trackingbug.jpg') no-repeat;
+  background-size: cover;
 }
 
 .login-box {

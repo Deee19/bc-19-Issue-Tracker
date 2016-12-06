@@ -31,6 +31,10 @@ var publicpath = path.join(__dirname, 'public');
 app.get('/', function (req, res) {
 	res.sendFile(path.join(publicpath, 'views/index.html'));
 });
+app.get('/main', function (req, res) {
+	res.sendFile(path.join(publicpath, 'views/main.html'));
+});
+
 
 
 module.exports = app;
