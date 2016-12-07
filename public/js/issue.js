@@ -1,13 +1,15 @@
 var userdetails;
+var database = firebase.database();
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     userdetails = user;
-    // console.log(user);
+    viewissue();
   } else {
     console.log("Not logged in");
   }
 });
-var database = firebase.database();
+
+
 
 function newissue() {
   var name = document.getElementById("issue-name").value;
@@ -28,11 +30,22 @@ function newissue() {
 }
 
 function viewissue() {
-  var userId = firebase.auth().currentUser.user;
-  var viewIssue = database.ref("issues").orderByChild("user");
-  console.log(viewIssue);
-  viewIssue.on('value', function(snapshot) {
-    console.log(snapshot.val());
+  var userId = firebase.auth().currentUser.email;
+  //console.log(userId)
+  var viewIssue = database.ref("issues").orderByChild("user").equalTo(userId);
+  //console.log(viewIssue);
+  viewIssue.on('value', function (snapshot) {
+    var allIssues = snapshot.val();
+
+    var issueInfo = '';
+    for (var eachKey in allIssues) {
+      if (allIssues[eachKey].user === userdetails.email) {
+        var eachItem = allIssues[eachKey];
+        issueInfo += '<tr><td>' + eachItem.department + '</td><td>' + eachItem.description + '</td><td>' +
+          eachItem.name + '</td><td>' + eachItem.priority + '</td></tr>';
+      }
+    }
+    $("#createdIssues").html(issueInfo);
   }, function (error) {
     console.log(error.code);
   });
