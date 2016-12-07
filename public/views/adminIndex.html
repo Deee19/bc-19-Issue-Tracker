@@ -12,32 +12,23 @@
     authDomain: "issue-tracker-8c7e0.firebaseapp.com",
     databaseURL: "https://issue-tracker-8c7e0.firebaseio.com",
     storageBucket: "issue-tracker-8c7e0.appspot.com",
-
     messagingSenderId:"893777413665" 
     }; 
   firebase.initializeApp(config);
   </script>
-  <script type="text/javascript" src="js/login.js"></script>
-  <script type="text/javascript" src="js/register.js"></script>
+  <script type="text/javascript" src="js/adminlogin.js"></script>
+  <script type="text/javascript" src="js/adminregister.js"></script>
 </head>
 
 <body>
   <div class="login-box">
-    <h2 style="text-align: center">Issue Tracker</h2>
+    <h2 style="text-align: center">Admin Login</h2>
     <hr/>
     <div class="lb-header">
       <a href="#" class="active" id="login-box-link">Login</a>
       <a href="#" id="signup-box-link">Sign Up</a>
     </div>
-    <!--<div class="social-login">
-      <a href="#">
-        <i class="fa fa-facebook fa-lg"></i> Login in with facebook
-      </a>
-      <a href="#">
-        <i class="fa fa-google-plus fa-lg"></i> log in with Google
-      </a>
-    </div>-->
-    <div class="email-login">
+    <form class="email-login">
       <div class="u-form-group">
         <input type="email" id="emailInput" placeholder="Email" />
       </div>
@@ -45,10 +36,22 @@
         <input type="password" id="passwordInput" placeholder="Password" />
       </div>
       <div class="u-form-group">
+                      <label >Department</label>
+                      <select id="issue-department" class="form-control">
+                        <option value="">--Select--</option>
+                        <option value="operations">Operations</option>
+                        <option value="finance">Finanace</option>
+                        <option value="training">Training</option>
+                        <option value="recruitment">Recruitment</option>
+                        <option value="sales">Sales</option>
+                        <option value="marketing">Marketing</option>
+                      </select>
+                    </div>
+      <div class="u-form-group">
         <button onclick="login()">Log in</button>
       </div>
-    </div>
-    <div class="email-signup">
+    </form>
+    <form class="email-signup">
       <div class="u-form-group">
         <input type="email" id="email" placeholder="Email" />
       </div>
@@ -59,9 +62,21 @@
         <input type="password" id="confirmpassword" placeholder="Confirm Password" />
       </div>
       <div class="u-form-group">
+                      <label>Department</label>
+                      <select id="issue-department" class="form-control">
+                        <option value="">--Select--</option>
+                        <option value="operations">Operations</option>
+                        <option value="finance">Finanace</option>
+                        <option value="training">Training</option>
+                        <option value="recruitment">Recruitment</option>
+                        <option value="sales">Sales</option>
+                        <option value="marketing">Marketing</option>
+                      </select>
+                    </div>
+      <div class="u-form-group">
         <button onclick="register()">Sign Up</button>
       </div>
-    </div>
+    </form>
   </div>
 </body>
 
