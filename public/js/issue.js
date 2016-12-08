@@ -9,8 +9,6 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
-
-
 function newissue() {
   var name = document.getElementById("issue-name").value;
   var description = document.getElementById("issue-description").value;
@@ -21,7 +19,9 @@ function newissue() {
     description: description,
     priority: priority,
     department: department,
-    user: userdetails.email
+    user: userdetails.email,
+    status: "open",
+    comment: ""
   }).then(function () {
     alert("Issue successfully created");
   }).catch(function (error) {
@@ -31,9 +31,7 @@ function newissue() {
 
 function viewissue() {
   var userId = firebase.auth().currentUser.email;
-  //console.log(userId)
   var viewIssue = database.ref("issues").orderByChild("user").equalTo(userId);
-  //console.log(viewIssue);
   viewIssue.on('value', function (snapshot) {
     var allIssues = snapshot.val();
 
@@ -42,7 +40,7 @@ function viewissue() {
       if (allIssues[eachKey].user === userdetails.email) {
         var eachItem = allIssues[eachKey];
         issueInfo += '<tr><td>' + eachItem.department + '</td><td>' + eachItem.description + '</td><td>' +
-          eachItem.name + '</td><td>' + eachItem.priority + '</td></tr>';
+          eachItem.name + '</td><td>' + eachItem.priority + '</td><td>' + eachItem.status + '</td><td>'+ eachItem.comment + '</td></tr>';
       }
     }
     $("#createdIssues").html(issueInfo);

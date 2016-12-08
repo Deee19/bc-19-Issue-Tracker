@@ -12,18 +12,58 @@ firebase.auth().onAuthStateChanged(function (user) {
 function adminViewIssue() {
 
   var viewIssue = database.ref("issues");
-  console.log(viewIssue);
   viewIssue.on('value', function (snapshot) {
     var allIssues = snapshot.val();
-    console.log(allIssues);
     var issueInfo = '';
     for (var eachKey in allIssues) {
       var eachItem = allIssues[eachKey];
-      issueInfo += '<tr><td>' + eachItem.department + '</td><td>' + eachItem.description + '</td><td>' +
-        eachItem.name + '</td><td>' + eachItem.priority + '</td></tr>';
+      issueInfo += '<tr id=' + eachKey + '><td class="dept">' + eachItem.department + '</td><td class="desc">' + eachItem.description + '</td><td class="name">' +
+        eachItem.name + '</td><td class="priority">' + eachItem.priority + '</td><td>' + eachItem.status + '</td><td>' + eachItem.comment + '</td><td> <button type="button" class="btn view btn-primary">View</button> </td></tr>';
     }
     $("#createdIssues").html(issueInfo);
   }, function (error) {
     console.log(error.code);
+  });
+}
+
+$('tbody').delegate('.view', 'click', function () {
+  var anIssueDom = $(this).parents('tr');
+  $('#issueName').text(anIssueDom.find('.name').text())
+  $('#description').text(anIssueDom.find('.desc').text())
+  $('#priority').text(anIssueDom.find('.priority').text())
+  $('#department').text(anIssueDom.find('.dept').text())
+  $('#issueId').val(anIssueDom.attr("id"));
+  $('#issueDetails').modal();
+});
+
+function updateIssue() {
+  var issueId = $('#issueId').val()
+  var status = $('#status').val();
+  var comment = $('#comments').val();
+  database.ref("issues/" + issueId).update({
+    status: status,
+    comment: comment
+  }).then(function () {
+    alert('Issue updated');
+  }).catch(function () {
+    alert('Error occured while updating');
+  });
+}
+
+function newUser() {
+  var name = document.getElementById("full-name").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var department = document.getElementById("department").value;
+  database.ref("newadminusers").push({
+    name: name,
+    email: email,
+    password: password,
+    password: password,
+    department: department,
+  }).then(function () {
+    alert("New Admin User created");
+  }).catch(function (error) {
+    alert(error.message);
   });
 }
