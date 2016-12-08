@@ -12,12 +12,6 @@ var port = 3000;
 //for static css and js files
 app.use(express.static('public'));
 
-//form handling
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-
 var setpath = path.join(__dirname, '/views');
 
 //Start server
@@ -32,10 +26,10 @@ app.get('/', function (req, res) {
 app.get('/main', function (req, res) {
   res.sendFile(path.join(publicpath, 'views/main.html'));
 });
-//route for the admin page
-app.get('/admin', function (req, res) {
-  res.sendFile(path.join(publicpath, 'views/admin.html'));
-});
+// //route for the admin page
+// app.get('/admin', function (req, res) {
+//   res.sendFile(path.join(publicpath, 'views/admin.html'));
+// });
 app.get('/adminmain', function (req, res) {
   res.sendFile(path.join(publicpath, 'views/adminmain.html'));
 });

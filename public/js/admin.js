@@ -65,8 +65,7 @@ function newUser() {
     name: name,
     email: email,
     password: password,
-    password: password,
-    department: department,
+    department: department
   }).then(function () {
     alert("New Admin User created");
   }).catch(function (error) {

@@ -1,5 +1,4 @@
 var userdetails;
-var database = firebase.database();
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     userdetails = user;
