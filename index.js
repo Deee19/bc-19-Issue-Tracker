@@ -7,7 +7,7 @@ var app = express();
 // var route = require('./route.js');
 // app.use('/', route);
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 //for static css and js files
 app.use(express.static('public'));
