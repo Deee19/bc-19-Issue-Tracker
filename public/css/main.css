@@ -9,6 +9,10 @@ body {
 #wrapper {
   width: 100%;
 }
+#logo {
+  float: right;
+  margin-left: 450px;
+}
 #page-wrapper {
   padding: 0 15px;
   min-height: 568px;
