@@ -18,7 +18,7 @@ function adminViewIssue() {
     for (var eachKey in allIssues) {
       var eachItem = allIssues[eachKey];
       issueInfo += '<tr id=' + eachKey + '><td class="dept">' + eachItem.department + '</td><td class="desc">' + eachItem.description + '</td><td class="name">' +
-        eachItem.name + '</td><td class="priority">' + eachItem.priority + '</td><td>' + eachItem.status + '</td><td>' + eachItem.comment + '</td><td> <button type="button" class="btn view btn-primary">View</button> </td></tr>';
+        eachItem.name + '</td><td class="priority">' + eachItem.priority + '</td><td>' + eachItem.status + '</td><td>' + eachItem.assign + '</td><td>' + eachItem.comment + '</td><td> <button type="button" class="btn view btn-primary">View</button> </td></tr>';
     }
     $("#createdIssues").html(issueInfo);
   }, function (error) {
@@ -39,9 +39,11 @@ $('tbody').delegate('.view', 'click', function () {
 function updateIssue() {
   var issueId = $('#issueId').val()
   var status = $('#status').val();
+  var assign = $('#assign').val();
   var comment = $('#comments').val();
   database.ref("issues/" + issueId).update({
     status: status,
+    assign: assign,
     comment: comment
   }).then(function () {
     alert('Issue updated');
@@ -55,7 +57,11 @@ function newUser() {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   var department = document.getElementById("department").value;
-  database.ref("newadminusers").push({
+
+  //It creates a distinct Admin user
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then(function(user) {
+  database.ref("newadminusers/" + user.uid).set({
     name: name,
     email: email,
     password: password,
@@ -66,4 +72,5 @@ function newUser() {
   }).catch(function (error) {
     alert(error.message);
   });
+});
 }

@@ -12,3 +12,13 @@ function login() {
         });
 
 }
+
+function logOut() {
+    firebase.auth().signOut().then(function () {
+        window.location = "index";
+    }, function (error) {
+        // An error happened.
+        var errorMessage = error.message;
+        alert(errorMessage);
+    });
+}
