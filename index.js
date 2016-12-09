@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 var path = require('path');
 // var firebase = require('firebase');
 
@@ -12,7 +12,7 @@ var port = process.env.PORT || 3000;
 //for static css and js files
 app.use(express.static('public'));
 
-var setpath = path.join(__dirname, '/views');
+//var setpath = path.join(__dirname, '/views');
 
 //Start server
 app.listen(port, function () {

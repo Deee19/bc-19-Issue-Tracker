@@ -9,16 +9,19 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
+//function to view issues created by user
 function adminViewIssue() {
-
+  var user = firebase.auth().currentUser;
   var viewIssue = database.ref("issues");
   viewIssue.on('value', function (snapshot) {
     var allIssues = snapshot.val();
     var issueInfo = '';
+
     for (var eachKey in allIssues) {
       var eachItem = allIssues[eachKey];
       issueInfo += '<tr id=' + eachKey + '><td class="dept">' + eachItem.department + '</td><td class="desc">' + eachItem.description + '</td><td class="name">' +
-        eachItem.name + '</td><td class="priority">' + eachItem.priority + '</td><td>' + eachItem.status + '</td><td>' + eachItem.assign + '</td><td>' + eachItem.comment + '</td><td> <button type="button" class="btn view btn-primary">View</button> </td></tr>';
+        eachItem.name + '</td><td class="priority">' + eachItem.priority + '</td><td>' + eachItem.status + '</td><td>' + eachItem.assign + '</td><td>' + eachItem.comment +
+        '</td><td> <button type="button" class="btn view btn-primary">View</button> </td></tr>';
     }
     $("#createdIssues").html(issueInfo);
   }, function (error) {
@@ -52,6 +55,7 @@ function updateIssue() {
   });
 }
 
+//function to create a new admin user
 function newUser() {
   var name = document.getElementById("full-name").value;
   var email = document.getElementById("email").value;
@@ -60,16 +64,16 @@ function newUser() {
 
   //It creates a distinct Admin user
   firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then(function(user) {
-  database.ref("newadminusers/" + user.uid).set({
-    name: name,
-    email: email,
-    password: password,
-    department: department
-  }).then(function () {
-    alert("New Admin User created");
-  }).catch(function (error) {
-    alert(error.message);
-  });
-});
+    .then(function (user) {
+      database.ref("newadminusers/" + user.uid).set({
+        name: name,
+        email: email,
+        password: password,
+        department: department
+      }).then(function () {
+        alert("New Admin User created");
+      }).catch(function (error) {
+        alert(error.message);
+      });
+    });
 }
