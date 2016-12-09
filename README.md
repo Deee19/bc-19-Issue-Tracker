@@ -7,54 +7,41 @@ Andela Bootcamp Project to build a simple issue tracker application
   *  Login via email and Twitter.
   *  Users raise issue based on issue description, priority etc.
   *  When an issue is raised, an admin user based on the department gets notified and assigns the issue.
-  *  The admin marks the issue based.
+  *  The admin marks the issue as resolved or in-progress.
+  *  The admin can see all open and closed issues.
+* click [here](https://bc-19-issue-tracker.herokuapp.com/) to access the app on Heroku
 
 ## Dependencies
 
 ### Back End Dependencies
 *  This app's functionality depends on multiple packages including;
-  *  **[JavaScript](https://www.javascript.com/)** - JavaScript (JS) is a lightweight, interpreted, programming language with first-class functions.
+  *  **[Node.js(http://nodejs.org)** - ] - Node.js is an open-source, cross-platform JavaScript runtime environment for developing a diverse variety of tolls and applications.
   *  **[Express](http://expressjs.com/)** - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
   *  **[Firebase](https://firebase.google.com/)** - Firebase is a mobile and web application platform with tools and infrastructure designed to help developers build high-quality apps. 
 
 ## Front End Dependencies
+*  **[JavaScript](https://www.javascript.com/)** - JavaScript (JS) is a lightweight, interpreted, programming language with first-class functions.
 *  **[CSS](http://css.com/)** - The app's login and dashboard templates have been styled using this CSS framework
-*  **[BootStrap](https://angularjs.org/)** - This framework facilitates the dynamic aspects of this app. It enables the application of the Single Page Application philosophy and also has mechanisms to make calls to the backend to update the view with recent data.
-*  **[JQuery](https://github.com/danialfarid/ng-file-upload)** - This library is an angular component that enables file (images in this case) upload and also features a service that enables posting of these uploads to the back end.
+*  **[BootStrap](https://getbootstrap.com/)** - This framework helped to make the site responsive.
+*  **[JQuery](https://jquery.com)** - This library was used to make a responsive user interface.
 *  **[Font Awesome](https://fortawesome.github.io/Font-Awesome/)** - Iconic font and css toolkit.
 
 ## Installation and setup
 *  Navigate to a directory of choice on `terminal`.
 *  Clone this repository on that directory.
-  *  Using SSH;
+  *  Using CLI;
 
-    >`git clone git@github.com:andela-lkabui/checkpoint4.git`
+    >`git clone https://github.com/Deee19/bc-19-Issue-Tracker.git`
 
   *  Using HTTP;
 
-    >`https://github.com/andela-lkabui/checkpoint4.git`
+    >`https://github.com/Deee19/bc-19-Issue-Tracker`
 
 *  Navigate to the repo's folder on your computer
-  *  `cd checkpoint4/`
-*  Install the app's backend dependencies. For best results, using a [virtual environment](http://virtualenv.readthedocs.org/en/latest/installation.html) is recommended.
-  *  `pip install -r requirements`
-*  Install the app's database. The default `SQLite` was used for development.
-*  Install the app's front end dependencies using bower.
-  *  `./node_modules/bower/bin/bower install`
+  *  `cd bc-19-Issue-Tracker/`
+*  Install the app's backend dependencies.
+  *  `npm install`
+      You also need to have **node** and **git** installed on your system.
 
-    >In order to use bower, you need to install it through **npm**. You also need to have **node** and **git** installed on your system.
-
-*  Create and apply migrations
-  *  `python manage.py makemigrations app`
-  *  `python manage.py migrate app`
 * Run the app
-  *  `python manage.py runserver`
-  *  Running the command above will produce output that's similar to the sample below.
-
-  ```
-    System check identified 1 issue (0 silenced).
-    March 13, 2016 - 18:16:59
-    Django version 1.9.2, using settings 'vistagrid.settings'
-    Starting development server at http://127.0.0.1:8000/
-    Quit the server with CONTROL-C.
-  ```
+  *  `node index.js` 
